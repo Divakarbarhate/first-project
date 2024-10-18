@@ -5,9 +5,8 @@ import Tables from "./Tables"
 
 import { useState } from 'react';
 
-type User = {
-  
-} 
+
+
 
 // const index
 const index = () => {
@@ -29,10 +28,10 @@ const index = () => {
   };
   return (
     <div>
-      
-      <h2  className="text-2xl font-semibold text-gray-800 mb-5">Registration Form</h2>
+
+      <h2 className="text-2xl sm:text-2xl font-semibold text-gray-800 mb-5 mt-7 text-center">Registration Form</h2>
       <RegistrationForm addUser={addUser} />
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Registered Users</h2>
+      <h2 className="text-2xl sm:text-2xl font-semibold text-gray-800 mb-4 mt-5 text-center">Registered Users</h2>
       <Tables users={users} deleteUser={deleteUser} editUser={editUser} />
     </div>
   );

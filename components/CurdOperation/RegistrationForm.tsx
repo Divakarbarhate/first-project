@@ -21,6 +21,9 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ addUser }) => {
     password: '',
   });
 
+  console.log("This is CLient Side component");
+  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -41,7 +44,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ addUser }) => {
       <Toaster />
       <form 
         onSubmit={handleSubmit} 
-        className="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8 mt-6"
+        className="max-w-sm mx-auto bg-white shadow-lg rounded-lg p-8 mt-6 border border-black border-opacity-50 "
       >
         <div className="mb-6">
           <label className="block text-gray-700 text-sm font-bold mb-2">Name:</label>
@@ -95,7 +98,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ addUser }) => {
           <button
             id="btn"
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
           >
             Register
           </button>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { MdDelete } from "react-icons/md";
 import { CiCreditCard2 } from "react-icons/ci";
+import { toast, Toaster } from 'react-hot-toast';
+
 interface User {
   name: string;
   email: string;
@@ -27,6 +29,19 @@ const Tables: React.FC<UserTableProps> = ({ users, deleteUser, editUser }) => {
     setEditIndex(index);
     setEditFormData(users[index]);
   };
+  const handleSave = () =>{
+    toast.success('Update Succesfully!!', {
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+      iconTheme: {
+        primary: '#713200',
+        secondary: '#FFFAEE',
+      },
+    });
+  }
 
   const handleDeleteClick = (index: number) => {
     deleteUser(index);
@@ -49,25 +64,25 @@ const Tables: React.FC<UserTableProps> = ({ users, deleteUser, editUser }) => {
   };
 
   return (
-    <table>
+    
+    <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
       <thead>
-        <tr>
-          <th>Sr.No</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Create Password</th>
-          <th>Actions</th>
+        <tr className="bg-gray-100">
+          <th className="px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase tracking-wider bg-red">Sr.No</th>
+          <th className="px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Name</th>
+          <th className="px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Email</th>
+          <th className="px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Phone</th>
+          <th className="px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Password</th>
+          <th className="px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Actions</th>
         </tr>
       </thead>
       <tbody>
         {users.length > 0 ? (
           users.map((user, index) => (
-            <tr key={index}>
+            <tr key={index} className="border-t">
               {editIndex === index ? (
-                <td colSpan={6}>
-                  {/* Edit Mode */}
-                  <form onSubmit={handleEditSubmit}>
+                <td colSpan={6} className="px-6 py-4">
+                  <form onSubmit={handleEditSubmit} className="space-y-4">
                     <input
                       type="text"
                       name="name"
@@ -75,6 +90,7 @@ const Tables: React.FC<UserTableProps> = ({ users, deleteUser, editUser }) => {
                       onChange={handleEditChange}
                       placeholder="Name"
                       required
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
                     <input
                       type="email"
@@ -83,6 +99,7 @@ const Tables: React.FC<UserTableProps> = ({ users, deleteUser, editUser }) => {
                       onChange={handleEditChange}
                       placeholder="Email"
                       required
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
                     <input
                       type="text"
@@ -91,6 +108,7 @@ const Tables: React.FC<UserTableProps> = ({ users, deleteUser, editUser }) => {
                       onChange={handleEditChange}
                       placeholder="Phone"
                       required
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
                     <input
                       type="password"
@@ -99,22 +117,43 @@ const Tables: React.FC<UserTableProps> = ({ users, deleteUser, editUser }) => {
                       onChange={handleEditChange}
                       placeholder="Password"
                       required
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2" type="submit">Save</button>
-                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded margin-top 20px" onClick={() => setEditIndex(null)}>Cancel</button>
+                    <div className="flex space-x-4">
+                      <button
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-lg"
+                        type="submit"
+                      onClick={handleSave}>
+                        Save
+                      </button>
+                      <button
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded-lg"
+                        onClick={() => setEditIndex(null)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </form>
                 </td>
               ) : (
                 <>
-                  <td>{index + 1}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phone}</td>
-                  <td>{user.password}</td>
-                  <td>
-                    <button  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2"
-   onClick={() => handleEditClick(index)}><CiCreditCard2 /></button>
-                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleDeleteClick(index)}><MdDelete />
+                  <td className="px-6 py-4">{index + 1}</td>
+                  <td className="px-6 py-4">{user.name}</td>
+                  <td className="px-6 py-4">{user.email}</td>
+                  <td className="px-6 py-4">{user.phone}</td>
+                  <td className="px-6 py-4">{user.password}</td>
+                  <td className="px-6 py-4 flex space-x-2">
+                    <button
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-lg"
+                      onClick={() => handleEditClick(index)}
+                    >
+                      <CiCreditCard2 />
+                    </button>
+                    <button
+                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded-lg"
+                      onClick={() => handleDeleteClick(index)}
+                    >
+                      <MdDelete />
                     </button>
                   </td>
                 </>
@@ -123,7 +162,9 @@ const Tables: React.FC<UserTableProps> = ({ users, deleteUser, editUser }) => {
           ))
         ) : (
           <tr>
-            <td colSpan={6}>No users registered</td>
+            <td colSpan={6} className="px-6 py-4 text-center text-gray-500">
+              No users registered
+            </td>
           </tr>
         )}
       </tbody>
@@ -132,4 +173,3 @@ const Tables: React.FC<UserTableProps> = ({ users, deleteUser, editUser }) => {
 };
 
 export default Tables;
-
