@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import RegistrationForm from "./RegistrationForm"
 import Tables from "./Tables"
-
+// sd
 interface User {
   name: string;
   email: string;
@@ -13,11 +13,6 @@ interface User {
 // gg
 const Index: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
-import { useState } from 'react';
-
-// const index
-const index = () => {
-  const [users, setUsers] = useState([]);
 
   const addUser = (newUser: User) => {
     setUsers([...users, newUser]);
