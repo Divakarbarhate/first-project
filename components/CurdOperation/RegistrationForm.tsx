@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
-import {toast, Toaster} from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 
 interface User {
   name: string;
@@ -33,59 +33,74 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ addUser }) => {
     e.preventDefault();
     addUser(formData);
     setFormData({ name: '', email: '', phone: '', password: '' });
-    toast.success("Submitted Successfully!!")
+    toast.success("Submitted Successfully!!");
   };
 
   return (
     <>
-    <Toaster />
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Name"
-          required
-        />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Email Address"
-          required
-        />
-      </div>
-      <div>
-        <label>Phone:</label>
-        <input
-          type="text"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          placeholder="Phone Number"
-          required
-        />
-      </div>
-      <div>
-        <label>Create Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          placeholder="Create Password"
-          required
-        />
-      </div>
-      <button id='btn' type="submit">Register</button>
-    </form>
+      <Toaster />
+      <form 
+        onSubmit={handleSubmit} 
+        className="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8 mt-6"
+      >
+        <div className="mb-6">
+          <label className="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Enter your name"
+            required
+            className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div className="mb-6">
+          <label className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter your email"
+            required
+            className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div className="mb-6">
+          <label className="block text-gray-700 text-sm font-bold mb-2">Phone:</label>
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Enter your phone number"
+            required
+            className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div className="mb-6">
+          <label className="block text-gray-700 text-sm font-bold mb-2">Create Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Create a password"
+            required
+            className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div className="text-center">
+          <button
+            id="btn"
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+          >
+            Register
+          </button>
+        </div>
+      </form>
     </>
   );
 };
