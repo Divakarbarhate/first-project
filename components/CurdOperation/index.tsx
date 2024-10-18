@@ -9,7 +9,7 @@ type User = {
   
 } 
 
-
+// const index
 const index = () => {
   const [users, setUsers] = useState([]);
 
