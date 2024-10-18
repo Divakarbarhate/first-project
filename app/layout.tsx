@@ -28,12 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`bg-[#FCFCFC] dark:bg-black ${geistSans.variable} ${geistMono.variable} antialiased`}
+        // className={`bg-[#FCFCFC] dark:bg-black ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>     
-          <Header/> 
+        {/* <Providers>     
+          <Header/>  */}
         {children}
-</Providers>
+{/* </Providers> */}
       </body>
     </html>
   );
