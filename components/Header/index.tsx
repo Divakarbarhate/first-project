@@ -4,7 +4,7 @@ import React from 'react';
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="bg-gray-800 text-white">
+    <nav className="bg-white dark:bg-gray-800 text-black dark:text-white ">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -34,6 +34,7 @@ const Navbar: React.FC = () => {
               </div>
             </div>
           </div>
+              <ThemeToggler />
         </div>
       </div>
 
