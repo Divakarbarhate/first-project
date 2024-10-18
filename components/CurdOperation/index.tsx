@@ -10,7 +10,7 @@ interface User {
   password: string;
 }
 
-
+// gg
 const Index: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
 
