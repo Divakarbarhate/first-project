@@ -1,6 +1,8 @@
-"use client";
+
+'use client';
 import React, { useState } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
+import { Button } from "@/components/ui/button";
 
 interface User {
   name: string;
@@ -21,9 +23,6 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ addUser }) => {
     password: '',
   });
 
-  console.log("This is CLient Side component");
-  
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -34,6 +33,11 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ addUser }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // Store the user data in localStorage before navigating
+    const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
+    const updatedUsers = [...storedUsers, formData];
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
+    
     addUser(formData);
     setFormData({ name: '', email: '', phone: '', password: '' });
     toast.success("Submitted Successfully!!");
@@ -95,13 +99,11 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ addUser }) => {
           />
         </div>
         <div className="text-center">
-          <button
-            id="btn"
-            type="submit"
-            className="w-full bg-blue-500 dark:bg-secondary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
-          >
-            Register
-          </button>
+          <Button 
+           id="btn"
+           type="submit" 
+        variant="login"
+       >  Register</Button>
         </div>
       </form>
     </>
