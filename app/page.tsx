@@ -1,25 +1,18 @@
+import Image from "next/image";
+import CurdOperation from "../components/CurdOperation";
+import { Metadata } from "next";
 
-'use client';
-import React, { useState } from 'react';
-import RegistrationForm from '@/components/CurdOperation/RegistrationForm';
-import { useRouter } from 'next/navigation';
+export const metaData:Metadata = {
+  title: "Home Page",
+  description: "This is the home page of the website",
+}
 
-const RegisterPage = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const router = useRouter();
+export default function Home() {
 
-  const addUser = (newUser: User) => {
-    setUsers([...users, newUser]);
-   
-    router.push('/tables');
-  };
-
+  console.log("This is Server Side component");
   return (
-    <div>
-      <h2 className="text-2xl sm:text-2xl font-semibold dark:text-white text-gray-800 mb-5 mt-7 text-center">Registration Form</h2>
-      <RegistrationForm addUser={addUser} />
-    </div>
+    <>
+    <CurdOperation />
+    </>
   );
-};
-
-export default RegisterPage;
+}
