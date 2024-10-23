@@ -19,11 +19,11 @@ const config: Config = {
   			black: '#121723',
   			dark: '#1D2430',
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
+  				DEFAULT: '#4843',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
+  				DEFAULT: '#f547',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			yellow: '#FBB040',
